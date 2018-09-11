@@ -4,8 +4,8 @@ from flask_cors import CORS
 import requests
 
 app = Flask(__name__,
-            static_folder = "./dist/static",
-            template_folder = "./dist")
+            static_folder = "./frontend/dist/static",
+            template_folder = "./frontend/dist")
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
