@@ -4,3 +4,18 @@
 ```
 ./start.sh 
 ```
+2. 
+```
+# install front-end
+cd frontend
+npm install
+
+# build for production/Flask with minification
+npm run build
+
+# install back-end
+pip install flask flask-cors
+
+# serve back-end at localhost:8080
+FLASK_APP=run.py flask run --port 8080 --host 0.0.0.0
+```
