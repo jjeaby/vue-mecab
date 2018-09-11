@@ -4,7 +4,7 @@
 ```
 ./start.sh 
 ```
-2. 
+2. 상세 실행 방법 
 ```
 # install front-end
 cd frontend
@@ -19,3 +19,5 @@ pip install flask flask-cors
 # serve back-end at localhost:8080
 FLASK_APP=run.py flask run --port 8080 --host 0.0.0.0
 ```
+
+### refer : https://codeburst.io/full-stack-single-page-application-with-vue-js-and-flask-b1e036315532
