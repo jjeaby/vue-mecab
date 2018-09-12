@@ -11,7 +11,7 @@ cd frontend
 npm install
 
 # build for production/Flask with minification
-npm run build
+npm run serve
 
 # install back-end
 pip install flask flask-cors
