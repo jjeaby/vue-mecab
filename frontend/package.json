@@ -40,7 +40,8 @@
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    }
+    },
+    "indent": ["error", 4]
   },
   "postcss": {
     "plugins": {
