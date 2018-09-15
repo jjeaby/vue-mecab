@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import About from './views/About.vue';
-import MecabPos from './views/MecabPos.vue';
+import MecabPosTagger from './views/mecabpostagger';
 
 Vue.use(Router);
 
@@ -15,18 +14,19 @@ export default new Router({
       name: 'home',
       component: Home,
     },
+
     {
-      path: '/mecabpos',
-      name: 'mecabpos',
-      component: MecabPos,
+      path: '/mecabpostagger',
+      name: 'mecabpostagger',
+      component: MecabPosTagger,
     },
+
     {
       path: '/',
       name: 'about',
-      component: About,
     },
     {
-      path: '/',
+      path: '/about',
       name: 'about',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route

@@ -1,15 +1,29 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/mecabpos">Mecab 형태소 분석</router-link> |
-      <router-link to="/mecabspacing">Mecab 띠어쓰기</router-link> |
-      <router-link to="/">About</router-link>
+      <router-link to="/mecabpostagger">Mecab Pos Tagger</router-link> |
+      <router-link to="/about">About</router-link>
     </div>
     <router-view/>
   </div>
 </template>
-<style lang="scss">
-  // I had to import main scss file in every .vue component. Otherwise the `$vue-green` is undefined when bunddling.
-  @import './styles/common';
-</style>
 
+<style lang="scss">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+</style>

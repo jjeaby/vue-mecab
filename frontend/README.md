@@ -1,5 +1,9 @@
 # frontend
 
+참고 : 
+https://router.vuejs.org/kr/guide/essentials/dynamic-matching.html
+
+
 ## Project setup
 ```
 npm install
