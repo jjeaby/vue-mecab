@@ -11,18 +11,20 @@
             </div>
             <div class="to">
                 <div class="convertorBtn">
-                    <div class="src">
+                    <div>
                         <button @click="mecabPos()">분석</button>
                     </div>
-                    <div class="to">&nbsp;</div>
-                    <div class="tgt">
+                    <div>&nbsp;</div>
+                    <div >
                         <button @click="mecabPosReset()">리셋</button>
+
                     </div>
                 </div>
             </div>
             <div class="tgt">
                 <textarea v-model="tgtText" placeholder="Output Text" cols="50" rows="20"></textarea>
             </div>
+
         </div>
     </div>
 
@@ -31,11 +33,8 @@
 
 <style>
     .convertorBtn {
-        overflow: visible;
-        vertical-align: middle;
-        padding: 7px;
+        width: 150px;
         /*display: flex;*/
-
     }
 
     .convertorBtn > div {
@@ -60,20 +59,20 @@
     }
 
     .src {
-        width: auto;
+        width: 390px;
         height: auto;
         text-align: center;
     }
 
     .to {
-        width: 70px;
+        width: 130px;
         text-align: center;
     }
 
     .tgt {
-        width: auto;
+        width: 390px;
         height: auto;
-        text-align: center;
+        text-align: left;
     }
 
     textarea {
