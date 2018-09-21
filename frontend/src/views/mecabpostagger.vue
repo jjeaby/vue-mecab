@@ -5,12 +5,12 @@
                 Mecab 형태소 분석(Pos Tagger)
             </h2>
         </div>
-        <div class="convertor" >
+        <div class="convertor">
             <div class="src">
-                <textarea v-bind:id="src" v-model="srcText" placeholder="Input Text" cols="50" rows="10"></textarea>
+                <textarea v-model="srcText" placeholder="Input Text" cols="50" rows="20"></textarea>
             </div>
             <div class="to">
-                <div class="convertorBtn" >
+                <div class="convertorBtn">
                     <div class="src">
                         <button @click="mecabPos()">분석</button>
                     </div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="tgt">
-                <textarea v-bind:id="tgt" v-model="tgtText" placeholder="Output Text" cols="50" rows="10"></textarea>
+                <textarea v-model="tgtText" placeholder="Output Text" cols="50" rows="20"></textarea>
             </div>
         </div>
     </div>
@@ -69,6 +69,7 @@
         width: 70px;
         text-align: center;
     }
+
     .tgt {
         width: auto;
         height: auto;
@@ -82,39 +83,54 @@
 
 <script>
 
+import axios from 'axios';
 
-    export default {
-        name: 'mecabpostagger',
+export default {
+    name: 'mecabpostagger',
 
-        data() {
-            return {
-                srcText: '',
-                tgtText: ''
-            }
-        },
-        created() {
-            // 뷰가 생성되고 데이터가 이미 감시 되고 있을 때 데이터를 가져온다.
-            // this.fetchData()
-        },
-        watch: {
-            // 라우트가 변경되면 메소드를 다시 호출됩니다.
-            // '$route': 'fetchData'
-            //'srcText': 'mecabPos'
+    data() {
+        return {
+            srcText: '',
+            tgtText: '',
+            error: [],
+        };
+    },
+    created() {
+        // 뷰가 생성되고 데이터가 이미 감시 되고 있을 때 데이터를 가져온다.
+        // this.mecabPos();
+    },
+    watch: {
+        // 라우트가 변경되면 메소드를 다시 호출됩니다.
+        // '$route': 'fetchData'
+        // 'srcText': 'mecabPos'
+    },
+    methods: {
+        // fetchData() {
+        //     this.tgtText = 'adsf';
+        // }
+        mecabPos() {
+            // this.tgtText = 'aaaa';
+            const requestData = {};
+            requestData.srcText = this.srcText;
 
+            axios.post('http://localhost:18080/api/mecabpos', requestData)
+                .then((response) => {
+                    // JSON responses are automatically parsed.
+                    const responseData = response.data;
+                    const responseDataJson = JSON.stringify(responseData);
+                    this.tgtText = JSON.stringify(JSON.parse(responseDataJson), null, 2);
+                })
+                .catch((error) => {
+                    console.log('errorType', typeof error);
+                    console.log('error', Object.assign({}, error));
+                });
         },
-        methods: {
-            // fetchData() {
-            //     this.tgtText = 'adsf';
-            // }
-            mecabPos() {
-                this.tgtText = 'aaaa';
-            },
-            mecabPosReset() {
-                this.tgtText = '';
-                this.srcText = '';
-            }
-        }
-    }
+        mecabPosReset() {
+            this.tgtText = '';
+            this.srcText = '';
+        },
+    },
+};
 
 
 </script>

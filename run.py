@@ -1,18 +1,22 @@
-from flask import Flask, render_template, jsonify, Blueprint
-from random import *
+from flask import Flask, render_template, Blueprint, request
 from flask_cors import CORS
 import requests
+import json
+
+from app.mecabpos import mecabpos
 
 app = Flask(__name__,
-            #static_folder = "./frontend/dist/js",
-            template_folder = "./frontend/dist")
+            # static_folder = "./frontend/dist/js",
+            template_folder="./frontend/dist")
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 css = Blueprint('css', __name__, static_url_path='/css', static_folder='./frontend/dist/css')
 js = Blueprint('js', __name__, static_url_path='/js', static_folder='./frontend/dist/js')
+
 app.register_blueprint(css)
 app.register_blueprint(js)
+
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -21,6 +25,12 @@ def catch_all(path):
         return requests.get('http://localhost:8080/{}'.format(path)).text
     return render_template("index.html")
 
+
+@app.route('/api/mecabpos', methods=['POST'])
+def mecab_pos():
+    query = request.get_json()
+    ret_pos = mecabpos(query["srcText"])
+    return str(json.dumps(ret_pos, ensure_ascii=False));
 
 
 if __name__ == '__main__':
