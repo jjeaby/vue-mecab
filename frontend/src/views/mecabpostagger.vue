@@ -112,7 +112,7 @@ export default {
             const requestData = {};
             requestData.srcText = this.srcText;
 
-            axios.post('http://svc.jjeaby.ml:18080/api/mecabpos', requestData)
+            axios.post('http://svc.jjeaby.ml/api/mecabpos', requestData)
                 .then((response) => {
                     // JSON responses are automatically parsed.
                     const responseData = response.data;
