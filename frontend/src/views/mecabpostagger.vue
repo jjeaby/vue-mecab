@@ -1,90 +1,88 @@
 <template>
     <div class="mecab">
-        <div>
-            <h2>
-                Mecab 형태소 분석(Pos Tagger)
-            </h2>
-        </div>
-        <div class="convertor">
-            <div class="src">
-                <textarea v-model="srcText" placeholder="Input Text" cols="50" rows="20"></textarea>
-            </div>
-            <div class="to">
-                <div class="convertorBtn">
-                    <div>
-                        <button @click="mecabPos()">분석</button>
-                    </div>
-                    <div>&nbsp;</div>
-                    <div >
-                        <button @click="mecabPosReset()">리셋</button>
+        <h1 class="title">Mecab Pos Tagger(형태소 분석)</h1>
+        <table class="tbl">
+            <caption>Mecab Pos Tagger(형태소 분석)</caption>
+            <colgroup>
+                <col style="width: 400px;">
+                <col style="width: 80px;">
+                <col style="width: 400px;">
+            </colgroup>
 
-                    </div>
-                </div>
-            </div>
-            <div class="tgt">
-                <textarea v-model="tgtText" placeholder="Output Text" cols="50" rows="20"></textarea>
-            </div>
-
-        </div>
+            <tr>
+                <th scope="col">
+                    <textarea v-model="srcText" placeholder="Input Text" cols="40" rows="20"></textarea>
+                </th>
+                <th scope="col">
+                    <button @click="mecabPos()">분석</button>
+                    <p/>
+                    <button @click="mecabPosReset()">리셋</button>
+                </th>
+                <th scope="col">
+                    <textarea v-model="tgtText" readonly placeholder="Output Text"
+                              cols="40" rows="20"></textarea>
+                </th>
+            </tr>
+        </table>
     </div>
 
 
 </template>
 
 <style>
-    .convertorBtn {
-        width: 150px;
-        /*display: flex;*/
+    .mecab {
+        padding: 20px;
+        justify-content: center;
     }
 
-    .convertorBtn > div {
-        text-align: center;
-        vertical-align: top;
-        margin: auto;
+    .title {
+        font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+        font-size: x-large;
+        font-style: normal;
+    }
+
+    .tbl {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .tbl caption {
+        overflow: hidden;
+        position: absolute;
+        width: 0;
+        height: 0;
+        line-height: 0;
+        text-indent: -9999px
+    }
+
+    .tbl th {
+        padding: 10px 0;
+    }
+
+    .tbl td {
+        padding: 10px 0 10px 10px;
+    }
+
+    @media all and (max-width: 880px) {
+        .tbl,
+        .tbl thead,
+        .tbl tbody,
+        .tbl tr,
+        .tbl th,
+        .tbl td {
+            display: block
+        }
 
     }
 
-    .convertor {
-        overflow: auto;
-        display: inline;
-        vertical-align: middle
-    }
-
-    .convertor > div {
-        text-align: center;
-        vertical-align: top;
-        margin: auto;
-
-        display: inline-block;
-    }
-
-    .src {
-        width: 390px;
-        height: auto;
-        text-align: center;
-    }
-
-    .to {
-        width: 130px;
-        text-align: center;
-    }
-
-    .tgt {
-        width: 390px;
-        height: auto;
-        text-align: left;
-    }
-
-    textarea {
-
-    }
 </style>
 
 <script>
-
 import axios from 'axios';
 
 export default {
+
     name: 'mecabpostagger',
 
     data() {
@@ -112,7 +110,8 @@ export default {
             const requestData = {};
             requestData.srcText = this.srcText;
 
-            axios.post('http://mecab.jjeaby.ml/api/mecabpos', requestData)
+            // axios.post('http://mecab.jjeaby.ml/api/mecabpos', requestData)
+            axios.post('http://localhost:18080/api/mecabpos', requestData)
                 .then((response) => {
                     // JSON responses are automatically parsed.
                     const responseData = response.data;
