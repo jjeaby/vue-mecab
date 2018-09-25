@@ -1,10 +1,10 @@
 <template>
-    <div class="mecabpostagger">
-        <TextAreaConverter title="Mecab 형태소 분석 (Pos Tagger)" url="/api/mecabpos"/>
+    <div class="mecabspacecheck">
+        <TextAreaConverter title="Mecab 띄어쓰기 (Space Check)" url="/api/mecabspace"/>
     </div>
 </template>
 <style>
-    .mecabpostagger {
+    .mecabspacecheck {
         padding: 20px;
         justify-content: center;
     }
@@ -15,7 +15,7 @@ import TextAreaConverter from '@/components/TextAreaConverter.vue';
 
 export default {
 
-    name: 'mecabpostagger',
+    name: 'mecabspacecheck',
     components: {
         TextAreaConverter,
     },

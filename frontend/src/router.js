@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import MecabPosTagger from './views/mecabpostagger.vue';
+import MecabSpaceCheck from './views/mecabspacecheck.vue';
 
 Vue.use(Router);
 
@@ -19,6 +20,11 @@ export default new Router({
             path: '/mecabpostagger',
             name: 'mecabpostagger',
             component: MecabPosTagger,
+        },
+        {
+            path: '/mecabspacecheck',
+            name: 'mecabspacecheck',
+            component: MecabSpaceCheck,
         },
         //
         // {

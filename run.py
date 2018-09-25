@@ -4,6 +4,7 @@ import requests
 import json
 
 from app.mecabpos import mecabpos
+from app.mecabspace import mecabspace
 
 app = Flask(__name__,
             # static_folder = "./frontend/dist/js",
@@ -31,6 +32,13 @@ def mecab_pos():
     query = request.get_json()
     ret_pos = mecabpos(query["srcText"])
     return str(json.dumps(ret_pos, ensure_ascii=False));
+
+@app.route('/api/mecabspace', methods=['POST'])
+def mecab_space():
+    query = request.get_json()
+    ret_pos = mecabspace(query["srcText"])
+    return str(json.dumps(ret_pos, ensure_ascii=False));
+
 
 
 if __name__ == '__main__':
