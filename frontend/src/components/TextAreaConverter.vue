@@ -1,24 +1,26 @@
 <template>
     <div class="TextAreaConverter">
-        <h1>{{ title }}</h1>
-
+        <div class="title">
+            <h2>{{ title }}</h2>
+        </div>
        <table class="tbl">
             <caption>Mecab Pos Tagger(형태소 분석)</caption>
             <colgroup>
-                <col style="width: 300px;">
+                <col style="width: 420px;">
                 <col style="width: 80px;">
-                <col style="width: 300px;">
+                <col style="width: 420px;">
             </colgroup>
-
             <tr>
                 <th scope="col" >
                     <textarea v-model="srcText" placeholder="Input Text"
                               cols="48" rows="20"></textarea>
                 </th>
                 <th scope="col">
+                    <p/>
                     <button @click="mecabPos()">분석</button>
                     <p/>
                     <button @click="mecabPosReset()">리셋</button>
+                    <p/>
                 </th>
                 <th scope="col" >
                     <textarea v-model="tgtText" readonly placeholder="Output Text"
@@ -33,6 +35,7 @@
     .TextAreaConverter {
         padding: 1px 1px 1px 1px;
         justify-content: center;
+        text-align: center;
     }
 
     .title {
@@ -41,8 +44,15 @@
         font-style: normal;
     }
 
+    .title {
+        width:920px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
     .tbl {
-        width: 100%;
+        width:920px;
+        margin: 0 auto;
         border-collapse: collapse;
         border-spacing: 0;
     }
@@ -58,10 +68,12 @@
 
     .tbl th {
         padding: 1px 1px 1px 1px;
+        table-layout:fixed;
     }
 
     .tbl td {
         padding: 1px 1px 1px 1px;
+
     }
 
     @media all and (max-width: 900px) {
@@ -85,6 +97,7 @@ export default {
     name: 'TextAreaConverter',
     props: {
         title: String,
+        url: String
     },
     data() {
         return {
@@ -110,8 +123,7 @@ export default {
             // this.tgtText = 'aaaa';
             const requestData = {};
             requestData.srcText = this.srcText;
-
-            axios.post('http://mecab.jjeaby.ml/api/mecabpos', requestData)
+            axios.post(this.url, requestData)
             //axios.post('http://localhost:18080/api/mecabpos', requestData)
                 .then((response) => {
                     // JSON responses are automatically parsed.
