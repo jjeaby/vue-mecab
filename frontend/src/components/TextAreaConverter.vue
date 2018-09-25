@@ -97,7 +97,7 @@ export default {
     name: 'TextAreaConverter',
     props: {
         title: String,
-        url: String
+        url: String,
     },
     data() {
         return {
@@ -124,12 +124,18 @@ export default {
             const requestData = {};
             requestData.srcText = this.srcText;
             axios.post(this.url, requestData)
-            //axios.post('http://localhost:18080/api/mecabpos', requestData)
+            // axios.post('http://localhost:18080/api/mecabpos', requestData)
                 .then((response) => {
                     // JSON responses are automatically parsed.
                     const responseData = response.data;
-                    const responseDataJson = JSON.stringify(responseData);
-                    this.tgtText = JSON.stringify(JSON.parse(responseDataJson), null, 2);
+
+                    if (this.url === '/api/mecabspace') {
+                        this.tgtText = responseData;
+
+                    } else {
+                        const responseDataJson = JSON.stringify(responseData);
+                        this.tgtText = JSON.stringify(JSON.parse(responseDataJson), null, 2);
+                    }
                 })
                 .catch((error) => {
                     console.log('errorType', typeof error);
