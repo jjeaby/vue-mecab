@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 /test/unit/coverage/
 __pycache__
+/log/mecab*log*txt
 
 # Editor directories and files
 .idea
