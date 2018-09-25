@@ -111,8 +111,8 @@ export default {
             const requestData = {};
             requestData.srcText = this.srcText;
 
-            // axios.post('http://mecab.jjeaby.ml/api/mecabpos', requestData)
-            axios.post('http://localhost:18080/api/mecabpos', requestData)
+            axios.post('http://mecab.jjeaby.ml/api/mecabpos', requestData)
+            //axios.post('http://localhost:18080/api/mecabpos', requestData)
                 .then((response) => {
                     // JSON responses are automatically parsed.
                     const responseData = response.data;
