@@ -2,6 +2,9 @@ from flask import Flask, render_template, Blueprint, request
 from flask_cors import CORS
 import requests
 import json
+import time
+from threading import Timer
+import os, inspect
 
 from app.mecabpos import mecabpos
 from app.mecabspace import mecabspace
@@ -26,6 +29,10 @@ def catch_all(path):
         return requests.get('http://localhost:8080/{}'.format(path)).text
     return render_template("index.html")
 
+@app.before_first_request
+def update_last_request_ms():
+    global LAST_REQUEST_MS
+    LAST_REQUEST_MS = time.time() * 1000
 
 @app.route('/api/mecabpos', methods=['POST'])
 def mecab_pos():
@@ -40,21 +47,12 @@ def mecab_space():
     return str(json.dumps(ret_pos, ensure_ascii=False));
 
 @app.route('/api/kill', methods=['POST'])
-def kill():
-    last_ms = LAST_REQUEST_MS
-    def shutdown():
-        if LAST_REQUEST_MS <= last_ms:  # subsequent requests abort shutdown
-            func = request.environ.get('werkzeug.server.shutdown')
-            if func is None:
-                raise RuntimeError('Not running with the Werkzeug Server')
-            func()
-        else:
-            pass
-
-    Timer(1.0, shutdown).start()  # wait 1 second
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
     return "Shutdown vue-mecab!"
-
-
 
 
 if __name__ == '__main__':
