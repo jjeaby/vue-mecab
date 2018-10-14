@@ -4,4 +4,4 @@
 #cd frontend 
 #npm run build
 #cd ..
-FLASK_DEBUG=1 python3 run.py
+FLASK_DEBUG=1 nohup python3 run.py&
