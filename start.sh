@@ -2,4 +2,4 @@
 #npm install
 #npm run build
 #cd ..
-nohup ./run.sh&
+nohup /home/jjeaby/Dev/vue-mecab/run.sh&
