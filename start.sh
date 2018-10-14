@@ -1,5 +1,6 @@
-#cd frontend
-#npm install
-#npm run build
-#cd ..
-nohup run.sh&
+cd frontend
+npm install
+npm run build
+cd ..
+./stop.sh
+nohup ./run.sh&
