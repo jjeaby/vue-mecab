@@ -39,6 +39,22 @@ def mecab_space():
     ret_pos = mecabspace(query["srcText"])
     return str(json.dumps(ret_pos, ensure_ascii=False));
 
+@app.route('/kill', methods=['POST'])
+def kill():
+    last_ms = LAST_REQUEST_MS
+    def shutdown():
+        if LAST_REQUEST_MS <= last_ms:  # subsequent requests abort shutdown
+            func = request.environ.get('werkzeug.server.shutdown')
+            if func is None:
+                raise RuntimeError('Not running with the Werkzeug Server')
+            func()
+        else:
+            pass
+
+    Timer(1.0, shutdown).start()  # wait 1 second
+    return "Shutdown vue-mecab!"
+
+
 
 
 if __name__ == '__main__':
