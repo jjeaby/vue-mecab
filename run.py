@@ -39,7 +39,7 @@ def mecab_space():
     ret_pos = mecabspace(query["srcText"])
     return str(json.dumps(ret_pos, ensure_ascii=False));
 
-@app.route('/kill', methods=['POST'])
+@app.route('/api/kill', methods=['POST'])
 def kill():
     last_ms = LAST_REQUEST_MS
     def shutdown():
