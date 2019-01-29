@@ -22,6 +22,7 @@
 
     #nav {
         padding: 30px;
+        display: inline-block;
         a {
             font-weight: bold;
             color: #2c3e50;
@@ -30,15 +31,6 @@
             }
         }
     }
-
-    .nav {
-        /*border-style: solid;*/
-        text-align: center;
-        margin: 0 auto;
-        justify-content: center;
-        width: 900px;
-    }
-
     @media all and (max-width: 900px) {
         .nav {
             margin: 0 auto;
