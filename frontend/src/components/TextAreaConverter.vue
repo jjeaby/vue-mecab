@@ -4,8 +4,9 @@
         <div class="center">
             <div><h2>{{ title }}</h2></div>
         </div>
-            <div class="center2" >
-                    <div v-bind:class="checkSizes" >
+
+            <div class="center2" v-if="checkSizes === 'grid'">
+                    <div class="grid" >
                         <div class="cell">
                         <textarea v-model="srcText" placeholder="Input Text"
                                   cols="48" rows="20"></textarea>
@@ -20,10 +21,35 @@
                         </div>
                     </div>
                 </div>
+            <div class="center2" v-else>
+            <div class="table" >
+                <div style="display: table-row;">
+                <div style="display: table-cell;" >
+                        <textarea v-model="srcText" placeholder="Input Text"
+                                  cols="48" rows="20"></textarea>
+                </div>
+                <div style="display: table-cell; vertical-align: middle;" >
+                    <button class="button" @click="mecabPos()">분석</button>
+                    <br>
+                    <button class="button" @click="mecabPosReset()">리셋</button>
+                </div>
+                <div style="display: table-cell;" >
+                   <textarea v-model="tgtText" readonly placeholder="Output Text"
+                              cols="48" rows="20"></textarea>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </template>
 
 <style scoped lang="scss">
+    .TextAreaConverter {
+        /*border-style: solid;*/
+
+    }
     .center {
         margin: auto;
         width: inherit;
@@ -32,19 +58,22 @@
 
     .center2 {
         /*border-style: solid;*/
-        margin: auto;
-        width: inherit;
+        position: relative;
         padding: 10px;
+
+    }
+
+    .table {
+        display:  table;
     }
 
     .block {
-        display: table-row;
+        display: inline-block;
     }
     .grid {
         display: inline-grid;
     }
     .cell {
-        /*display:table;*/
         width: inherit;
 
     }

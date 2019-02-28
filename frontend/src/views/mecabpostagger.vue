@@ -1,18 +1,20 @@
-<template>
-    <div class="center">
-        <TextAreaConverter   title="Mecab 형태소 분석 (Pos Tagger)" url="/api/mecabpos"/>
+<template id="app">
+    <div class="mecabpostagger" >
+        <div class="textarea">
+            <TextAreaConverter   title="Mecab 형태소 분석 (Pos Tagger)" url="/api/mecabpos"/>
+        </div>
     </div>
+
 </template>
-<style lang="scss" scoped>
-    .center {
-        margin: auto;
-        width: 50%;
-        padding: 10px;
+<style>
+    .mecabpostagger {
+        text-align: center;
     }
-    /*.mecabpostagger {*/
-        /*padding: 20px;*/
-        /*justify-content: center;*/
-    /*}*/
+    .textarea {
+        font-size: 15px;
+        text-align: center;
+        display: inline-block;
+    }
 
 </style>
 <script>

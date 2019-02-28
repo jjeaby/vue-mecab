@@ -1,17 +1,20 @@
-<template>
-    <div class="center">
-        <TextAreaConverter title="Mecab 띄어쓰기 (Space Check)" url="/api/mecabspace"/>
+<template id="app">
+    <div class="mecabspace" >
+        <div class="textarea">
+            <TextAreaConverter title="Mecab 띄어쓰기 (Space Check)" url="/api/mecabspace"/>
+        </div>
     </div>
+
 </template>
+
 <style>
-    .center {
-        margin: auto;
-        width: 50%;
-        padding: 10px;
+    .mecabspace {
+        text-align: center;
     }
-    .mecabspacecheck {
-        padding: 20px;
-        justify-content: center;
+    .textarea {
+        font-size: 15px;
+        text-align: center;
+        display: inline-block;
     }
 
 </style>
