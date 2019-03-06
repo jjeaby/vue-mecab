@@ -113,6 +113,7 @@ export default {
     created() {
         // 뷰가 생성되고 데이터가 이미 감시 되고 있을 때 데이터를 가져온다.
         // this.mecabPos();
+        this.resize();
         window.addEventListener('resize', this.resize);
     },
 
@@ -157,6 +158,7 @@ export default {
             this.tgtText = '';
             this.srcText = '';
         },
+
 
         resize() {
             const width = window.innerWidth;
