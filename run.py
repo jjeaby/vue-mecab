@@ -8,6 +8,7 @@ import os, inspect
 
 from app.mecabpos import mecabpos
 from app.mecabspace import mecabspace
+from app.mecabmultinoun import mecabextractmultinoun
 
 app = Flask(__name__,
             # static_folder = "./frontend/dist/js",
@@ -45,6 +46,13 @@ def mecab_space():
     query = request.get_json()
     ret_pos = mecabspace(query["srcText"])
     return str(json.dumps(ret_pos, ensure_ascii=False));
+
+@app.route('/api/mecabmultinoun', methods=['POST'])
+def mecab_extract_multi_nonw():
+    query = request.get_json()
+    ret_pos = mecabextractmultinoun(query["srcText"])
+    return str(json.dumps(ret_pos, ensure_ascii=False));
+
 
 @app.route('/api/kill', methods=['POST'])
 def shutdown_server():

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import MecabPosTagger from './views/mecabpostagger.vue';
 import MecabSpaceCheck from './views/mecabspacecheck.vue';
+import MecabMultiNoun from './views/mecabmultinoun.vue';
 
 Vue.use(Router);
 
@@ -26,13 +27,11 @@ export default new Router({
             name: 'mecabspacecheck',
             component: MecabSpaceCheck,
         },
-        //
-        // {
-        //     path: '/',
-        //     name: 'about',
-        //     component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-        //
-        // },
+        {
+            path: '/mecabmultinoun',
+            name: 'mecabmultinoun',
+            component: MecabMultiNoun,
+        },
         {
             path: '/about',
             name: 'about',

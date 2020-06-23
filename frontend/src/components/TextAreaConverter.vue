@@ -136,8 +136,8 @@ export default {
             // this.tgtText = 'aaaa';
             const requestData = {};
             requestData.srcText = this.srcText;
-            axios.post(this.url, requestData)
-                // axios.post('http://localhost:18080/api/mecabpos', requestData)
+            // axios.post(this.url, requestData)
+            axios.post('http://localhost:38080/api/mecabmultinoun', requestData)
                 .then((response) => {
                     // JSON responses are automatically parsed.
                     const responseData = response.data;
