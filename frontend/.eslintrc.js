@@ -10,10 +10,10 @@ module.exports = {
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        "ter-indent": [
-            true, 4, {"SwitchCase": true}
+        'ter-indent': [
+            true, 4, { SwitchCase: true },
         ],
-    "indent": ["error", 4]
+        indent: ['error', 4],
 
     },
     parserOptions: {
