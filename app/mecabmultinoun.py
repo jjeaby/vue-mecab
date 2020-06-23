@@ -19,7 +19,7 @@ def mecabextractmultinoun(text):
         result_text_list.update(result_mecab_multi_noun)
         user_log_write("mecabextractmultinoun", line, result_mecab_multi_noun)
 
-    # print("---", result_text_list)
+    print("---", result_text_list)
 
 
 
