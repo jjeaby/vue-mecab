@@ -1,7 +1,7 @@
 <template id="app">
     <div class="mecabspace" >
         <div class="textarea">
-            <TextAreaConverter title="Mecab 명사 추출" url="/api/mecabmultinoun"/>
+            <TextAreaConverter title="키워드 추출" url="/api/mecabmultinoun"/>
         </div>
     </div>
 

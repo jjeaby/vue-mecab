@@ -5,7 +5,7 @@
             |
             <router-link to="/mecabspacecheck">Mecab 띄어쓰기</router-link>
             |
-            <router-link to="/mecabmultinoun">Mecab 명사 추출</router-link>
+            <router-link to="/mecabmultinoun">키워드 추출</router-link>
             |
             <router-link to="/about">About</router-link>
         </div>
